@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMINO DE FE EN MI PARROQUIA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000 url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920') no-repeat center center fixed;
+            background-size: cover;
+            animation: moverEstrellas 60s linear infinite;
+            color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        @keyframes moverEstrellas {
+            0% { background-position: 0 0; }
+            100% { background-position: -1000px 500px; }
+        }
+
+        .caja-estilo {
+            background-color: rgba(255, 255, 255, 0.88);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            border: 3px solid #b71c1c;
+            box-shadow: 0 0 15px rgba(183, 28, 28, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        h1, h2, h3 {
+            color: #b71c1c;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+
+        p, li {
+            color: #212121;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+
+        .navbar-custom {
+            background-color: rgba(255, 255, 255, 0.92);
+            border: 2px solid #b71c1c;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .navbar-custom .nav-link {
+            color: #b71c1c;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-custom .nav-link:hover {
+            background-color: #b71c1c;
+            color: white;
+        }
+
+        .card {
+            border: 2px solid #b71c1c;
+            background-color: #fff;
+            box-shadow: 0 3px 8px rgba(183, 28, 28, 0.3);
+            height: 100%;
+        }
+
+        .card-title {
+            color: #b71c1c;
+            font-weight: bold;
+        }
+
+        .btn-rojo {
+            background-color: #b71c1c;
+            color: white;
+            border: none;
+        }
+
+        .btn-rojo:hover {
+            background-color: #8b0000;
+            color: white;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 3px solid #b71c1c;
+            background-color: #ffffff;
+        }
+
+        th {
+            background-color: #b71c1c;
+            color: white;
+            border: 2px solid #b71c1c;
+            padding: 12px;
+        }
+
+        td {
+            border: 2px solid #b71c1c;
+            padding: 10px;
+            color: #212121;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #fff5f5;
+        }
+
+        img, iframe {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 2px solid #b71c1c;
+            display: block;
+            margin: 15px auto;
+        }
+
+        .aviso-video {
+            background-color: #fff5f5;
+            border: 2px solid #b71c1c;
+            color: #b71c1c;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #b71c1c;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #b71c1c;
+            box-shadow: 0 0 0 0.25rem rgba(183, 28, 28, 0.25);
+        }
+
+        @media (max-width: 576px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .caja-estilo { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid px-3">
+        <header class="caja-estilo mt-3">
+            <h1>CAMINO DE FE EN MI PARROQUIA</h1>
+            <h2>Formación y preparación de monaguillos</h2>
+            <p class="text-center fst-italic" style="color: #b71c1c; font-weight: bold;">"Servir en el altar es servir a Cristo con amor y compromiso."</p>
+        </header>
+
+        <nav class="navbar navbar-expand-lg navbar-custom p-2">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="menuPrincipal">
+                    <ul class="navbar-nav gap-3">
+                        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#quienes">Quiénes Somos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#inscripciones">Inscripciones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#cronograma">Cronograma</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="container">
+            <section id="inicio" class="caja-estilo">
+                <article>
+                    <h2>✨ Bienvenidos a este Camino de Fe ✨</h2>
+                    <p class="text-justify">
+                        Nos alegra profundamente que hayas llegado hasta aquí, porque este espacio ha sido creado con mucho cariño y dedicación, pensando en todos aquellos corazones jóvenes que desean acercarse más a Dios y vivir su fe de una manera activa, alegre y comprometida. <br><br>
+                        <strong>Camino de Fe en mi Parroquia</strong> es mucho más que un proyecto de formación: es una oportunidad maravillosa de crecer, de aprender y de descubrir la belleza de servir. Está especialmente diseñado para niños, niñas, adolescentes y jóvenes que sienten en su interior el deseo de colaborar en la Iglesia, de participar en las celebraciones sagradas y de conocer más profundamente el inmenso amor que Dios nos tiene a cada uno de nosotros. <br><br>
+                        Al formar parte de esta familia, te invitamos a recorrer un sendero lleno de luz, donde aprenderás todo lo relacionado con la sagrada liturgia, el significado profundo de cada rito, el valor de cada oración y la importancia de cada gesto que se realiza en el altar. Ser monaguillo o monaguilla es un regalo inmenso: es tener el privilegio de estar cerca de la Eucaristía, de ayudar al sacerdote y de ser un ejemplo de entrega, humildad y alegría para toda nuestra comunidad parroquial. <br><br>
+                        Aquí encontrarás enseñanzas, materiales, actividades y momentos de encuentro que te ayudarán a fortalecer tu espíritu, a formar tu carácter y a vivir los valores del Evangelio en tu vida diaria. No solo aprenderás sobre las funciones y las tareas del servicio en el altar, sino que también crecerás como persona, harás nuevos amigos y descubrirás que servir a Dios es la tarea más hermosa y gratificante que podemos realizar. <br><br>
+                        Te invitamos a abrir tu corazón, a dejarte guiar por la fe y a formar parte de esta gran misión. Que cada paso que des aquí sea una semilla de amor, de respeto y de servicio, que florezca en tu vida y en la vida de todos los que te rodean. ¡Bienvenido, bienvenida, a este hermoso camino donde todos caminamos juntos hacia la luz de Cristo!
+                    </p>
+                    <div class="text-center mt-4">
+                        <a href="#inscripciones" class="btn btn-rojo btn-lg">¡Inscríbete aquí!</a>
+                    </div>
+                </article>
+            </section>
+
+            <section id="quienes" class="caja-estilo">
+                <article>
+                    <h2>Quiénes Somos</h2>
+                    <div class="row align-items-center">
+                        <div class="col-md-5">
+                            <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=900" alt="Comunidad parroquial" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-7">
+                            <p>
+                                Camino de Fe en mi Parroquia es un proyecto educativo y formativo orientado al crecimiento espiritual de los monaguillos y de todos los jóvenes interesados en participar activamente en la Iglesia. Nuestro objetivo es ofrecer herramientas de aprendizaje que permitan conocer mejor la liturgia, las funciones dentro del altar y los valores cristianos que fortalecen la vida comunitaria. <br><br>
+                                A través de esta iniciativa se promueve el respeto, la responsabilidad, el compañerismo y el servicio a Dios. También buscamos fomentar la participación en actividades parroquiales, encuentros formativos, celebraciones religiosas y obras de ayuda social. Creemos que la formación integral de los monaguillos contribuye al fortalecimiento de la comunidad cristiana.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section id="servicios" class="caja-estilo">
+                <h2>Servicios y Actividades</h2>
+                <div class="row g-4 mt-2">
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <h5 class="card-title text-center">📖 Formación Litúrgica</h5>
+                            <p class="card-text">Aprende el significado de cada rito, oración y gesto en la celebración de la Eucaristía.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <h5 class="card-title text-center">🤝 Servicio en el Altar</h5>
+                            <p class="card-text">Capacitación práctica sobre las funciones, vestimenta y comportamiento adecuado durante la misa.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <h5 class="card-title text-center">✨ Actividades Espirituales</h5>
+                            <p class="card-text">Convivencias, retiros, encuentros y celebraciones especiales para fortalecer la fe.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <h5 class="card-title text-center">📚 Material Educativo</h5>
+                            <p class="card-text">Guías, lecturas y recursos digitales para aprender y repasar lo visto en cada sesión.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <h5 class="card-title text-center">👥 Acompañamiento</h5>
+                            <p class="card-text">Orientación espiritual y personal para crecer en valores y en la vida cristiana.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <h5 class="card-title text-center">🎯 Preparación Especial</h5>
+                            <p class="card-text">Entrenamiento para celebraciones importantes como Semana Santa, Navidad y fiestas patronales.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="inscripciones" class="caja-estilo">
+                <h2>📋 Registro de Inscripciones</h2>
+                <p class="text-center mb-4">Completa el formulario para registrar nuevos participantes al programa.</p>
+                <div id="mensaje" class="alert d-none mb-3" role="alert"></div>
+                <div class="row g-4">
+                    <div class="col-md-5">
+                        <h3 class="text-center">Formulario</h3>
+                        <form id="formularioInscripcion">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ej: Juan Pérez" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="number" class="form-control" id="edad" min="8" max="99" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="categoria" class="form-label">Categoría</label>
+                                <select class="form-select" id="categoria" required>
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="Inicial">Inicial (8 - 12 años)</option>
+                                    <option value="Intermedio">Intermedio (13 - 17 años)</option>
+                                    <option value="Avanzado">Avanzado (18 años en adelante)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="motivo" class="form-label">Motivo de inscripción</label>
+                                <textarea class="form-control" id="motivo" rows="3" placeholder="Breve explicación..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-rojo w-100">Registrar Participante</button>
+                        </form>
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="text-center">Participantes Registrados</h3>
+                        <p class="text-end fw-bold">Total: <span id="contador">0</span></p>
+                        <div id="listaRegistros" class="mt-3">
+                            <p class="text-center text-muted">Aún no hay inscripciones registradas.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cronograma" class="caja-estilo">
+                <h2>Cronograma de Formación</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Actividad</th>
+                                <th>Día</th>
+                                <th>Horario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Formación Litúrgica</td>
+                                <td>Sábado</td>
+                                <td>09:00 - 11:00</td>
+                            </tr>
+                            <tr>
+                                <td>Ensayo General</td>
+                                <td>Domingo</td>
+                                <td>08:45 - 09:45</td>
+                            </tr>
+                            <tr>
+                                <td>Servicio en la Misa</td>
+                                <td>Domingo</td>
+                                <td>10:00 - 12:00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="caja-estilo">
+                <h2>Video Formativo</h2>
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" title="Video para monaguillos" allowfullscreen></iframe>
+                </div>
+                <div class="aviso-video mt-3">
+                    📹 Si el video no carga, puedes buscarlo en nuestro canal oficial de YouTube: Camino de Fe Parroquia
+                </div>
+            </section>
+
+            <section id="contacto" class="caja-estilo">
+                <h2>Contacto</h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h3>Información de contacto</h3>
+                        <p><strong>Correo:</strong> caminodefe@gmail.com</p>
+                        <p><strong>Teléfono:</strong> +593 999999999</p>
+                        <p><strong>Dirección:</strong> Parroquia San Pedro, Las Lajas, El Oro, Ecuador</p>
+                        <h4 class="mt-4">Redes Sociales</h4>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="btn btn-rojo">Facebook</a>
+                            <a href="#" class="btn btn-rojo">Instagram</a>
+                            <a href="#" class="btn btn-rojo">YouTube</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Escríbenos</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="nombreContacto" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="nombreContacto" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="correoContacto" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="correoContacto" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="asuntoContacto" class="form-label">Asunto</label>
+                                <input type="text" class="form-control" id="asuntoContacto" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensajeContacto" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="mensajeContacto" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-rojo w-100">Enviar mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="caja-estilo">
+                <h2>Información Importante</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>📌 <strong>Inscripciones abiertas:</strong> Para niños y jóvenes desde los 8 años en adelante.</p>
+                        <p>⏰ <strong>Horario de atención:</strong> Lunes a Viernes de 08:00 a 17:00.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>🎉 <strong>Próximo retiro:</strong> 15 de agosto, lugar por confirmar.</p>
+                        <p>🙏 <strong>Te esperamos:</strong> Participa y crece junto a nuestra comunidad.</p>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="caja-estilo text-center">
+            <p style="color: #b71c1c; font-weight: bold;">
+                <strong>Estudiante:</strong> Jesenia Montalván<br>
+                <strong>Asignatura:</strong> Desarrollo de Aplicaciones Web<br>
+                <strong>Año:</strong> 2026
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
