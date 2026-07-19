@@ -1,168 +1,302 @@
-// --------------------------
-// Variables globales
-// --------------------------
-const formulario = document.getElementById('formRegistro');
-const nombreInput = document.getElementById('nombre');
-const descripcionInput = document.getElementById('descripcion');
-const categoriaSelect = document.getElementById('categoria');
-const contadorSpan = document.getElementById('contador');
-const listaRegistrosDiv = document.getElementById('listaRegistros');
-const mensajeGeneral = document.getElementById('mensajeGeneral');
+// ============================================================
+// PROYECTO: Camino de Fe en mi Parroquia
+// SEMANA 7: Estructura de plantillas + contenido dinámico
+// ============================================================
 
-let registros = [];
-
-// --------------------------
-// Funciones de validación
-// --------------------------
-function validarNombre() {
-    const valor = nombreInput.value.trim();
-    const errorDiv = document.getElementById('errorNombre');
-
-    if (valor === '') {
-        nombreInput.classList.remove('is-valid');
-        nombreInput.classList.add('is-invalid');
-        errorDiv.textContent = 'Este campo es obligatorio';
-        return false;
-    } else if (valor.length < 3) {
-        nombreInput.classList.remove('is-valid');
-        nombreInput.classList.add('is-invalid');
-        errorDiv.textContent = 'Debe tener al menos 3 caracteres';
-        return false;
-    } else {
-        nombreInput.classList.remove('is-invalid');
-        nombreInput.classList.add('is-valid');
-        errorDiv.textContent = '';
-        return true;
+// 🔹 ARREGLO DE OBJETOS: Servicios y actividades
+const servicios = [
+    {
+        titulo: "Formación Litúrgica",
+        descripcion: "Aprende el significado de cada rito, oración y gesto dentro de la Misa.",
+        icono: "bi-book",
+        activo: true
+    },
+    {
+        titulo: "Encuentros de Oración",
+        descripcion: "Espacios semanales para fortalecer la vida espiritual y la comunidad.",
+        icono: "bi-heart-fill",
+        activo: true
+    },
+    {
+        titulo: "Retiros Espirituales",
+        descripcion: "Jornadas especiales de reflexión, convivencia y crecimiento en la fe.",
+        icono: "bi-sunrise",
+        activo: true
+    },
+    {
+        titulo: "Servicio en el Altar",
+        descripcion: "Práctica guiada para servir como monaguillo en las celebraciones.",
+        icono: "bi-star-fill",
+        activo: true
+    },
+    {
+        titulo: "Actividades Sociales",
+        descripcion: "Obras de ayuda, campañas solidarias y trabajo comunitario.",
+        icono: "bi-people-fill",
+        activo: false
+    },
+    {
+        titulo: "Capacitación Musical",
+        descripcion: "Talleres de canto litúrgico para acompañar las celebraciones.",
+        icono: "bi-music-note-beamed",
+        activo: false
     }
-}
+];
 
-function validarDescripcion() {
-    const valor = descripcionInput.value.trim();
-    const errorDiv = document.getElementById('errorDescripcion');
+// 🔹 ARREGLO DE OBJETOS: Cronograma de formación
+const cronograma = [
+    { actividad: "Catequesis básica",       dia: "Lunes",    horario: "16:00 - 17:30", estado: "Activo" },
+    { actividad: "Práctica litúrgica",      dia: "Miércoles",horario: "17:00 - 18:30", estado: "Activo" },
+    { actividad: "Encuentro de oración",    dia: "Viernes",  horario: "18:00 - 19:00", estado: "Activo" },
+    { actividad: "Retiro espiritual",       dia: "Sábado",   horario: "09:00 - 13:00", estado: "Próximo" },
+    { actividad: "Misa comunitaria",        dia: "Domingo",  horario: "10:00 - 11:30", estado: "Activo" },
+    { actividad: "Capacitación musical",    dia: "Martes",   horario: "16:00 - 17:00", estado: "Suspendido" }
+];
 
-    if (valor === '') {
-        descripcionInput.classList.remove('is-valid');
-        descripcionInput.classList.add('is-invalid');
-        errorDiv.textContent = 'Este campo es obligatorio';
-        return false;
-    } else if (valor.length < 10) {
-        descripcionInput.classList.remove('is-valid');
-        descripcionInput.classList.add('is-invalid');
-        errorDiv.textContent = 'Debe tener al menos 10 caracteres';
-        return false;
-    } else {
-        descripcionInput.classList.remove('is-invalid');
-        descripcionInput.classList.add('is-valid');
-        errorDiv.textContent = '';
-        return true;
-    }
-}
+// 🔹 ARREGLO: Participantes registrados
+let participantes = [];
 
-function validarCategoria() {
-    const valor = categoriaSelect.value;
-    const errorDiv = document.getElementById('errorCategoria');
+// ============================================================
+// 🔹 FUNCIÓN: Renderizar servicios en tarjetas
+// ============================================================
+function renderizarServicios() {
+    const contenedor = document.getElementById("contenedorServicios");
+    if (!contenedor) return;
+    
+    contenedor.innerHTML = "";
 
-    if (valor === '') {
-        categoriaSelect.classList.remove('is-valid');
-        categoriaSelect.classList.add('is-invalid');
-        errorDiv.textContent = 'Debe seleccionar una categoría';
-        return false;
-    } else {
-        categoriaSelect.classList.remove('is-invalid');
-        categoriaSelect.classList.add('is-valid');
-        errorDiv.textContent = '';
-        return true;
-    }
-}
+    servicios.forEach(servicio => {
+        const badge = servicio.activo
+            ? `<span class="badge bg-success">Disponible</span>`
+            : `<span class="badge bg-secondary">Próximamente</span>`;
 
-// Validación completa del formulario
-function validarFormulario() {
-    const v1 = validarNombre();
-    const v2 = validarDescripcion();
-    const v3 = validarCategoria();
-    return v1 && v2 && v3;
-}
-
-// --------------------------
-// Funciones de gestión de registros
-// --------------------------
-function agregarRegistro(datos) {
-    registros.push(datos);
-    actualizarVista();
-}
-
-function eliminarRegistro(indice) {
-    registros.splice(indice, 1);
-    mostrarMensaje('Registro eliminado correctamente', 'success');
-    actualizarVista();
-}
-
-function actualizarVista() {
-    // Actualizar contador
-    contadorSpan.textContent = registros.length;
-
-    // Limpiar lista
-    listaRegistrosDiv.innerHTML = '';
-
-    // Crear tarjetas para cada registro
-    registros.forEach((reg, indice) => {
-        const tarjeta = document.createElement('div');
-        tarjeta.className = 'col-md-4 col-sm-6';
-        tarjeta.innerHTML = `
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">${reg.nombre}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">${reg.categoria}</h6>
-                    <p class="card-text">${reg.descripcion}</p>
-                    <button class="btn btn-danger btn-sm" onclick="eliminarRegistro(${indice})">Eliminar</button>
+        const tarjeta = `
+            <div class="col-md-6 col-lg-4">
+                <div class="card p-3 text-center h-100">
+                    <i class="bi ${servicio.icono} fs-1 text-danger mb-2"></i>
+                    <h4 class="h6">${servicio.titulo}</h4>
+                    <p class="small">${servicio.descripcion}</p>
+                    ${badge}
                 </div>
             </div>
         `;
-        listaRegistrosDiv.appendChild(tarjeta);
+        contenedor.innerHTML += tarjeta;
     });
 }
 
-function mostrarMensaje(texto, tipo) {
-    mensajeGeneral.textContent = texto;
-    mensajeGeneral.classList.remove('d-none', 'alert-success', 'alert-danger');
-    mensajeGeneral.classList.add(`alert-${tipo}`);
-    setTimeout(() => mensajeGeneral.classList.add('d-none'), 3000);
+// ============================================================
+// 🔹 FUNCIÓN: Renderizar cronograma en tabla
+// ============================================================
+function renderizarCronograma() {
+    const cuerpo = document.getElementById("cuerpoCronograma");
+    if (!cuerpo) {
+        console.error("No se encontró el elemento #cuerpoCronograma");
+        return;
+    }
+    
+    cuerpo.innerHTML = "";
+
+    for (const item of cronograma) {
+        let claseEstado = "";
+        let mensajeEstado = "";
+
+        if (item.estado === "Activo") {
+            claseEstado = "bg-success text-white";
+            mensajeEstado = "✅ Activo";
+        } else if (item.estado === "Próximo") {
+            claseEstado = "bg-warning text-dark";
+            mensajeEstado = "⏳ Próximo";
+        } else {
+            claseEstado = "bg-secondary text-white";
+            mensajeEstado = "⛔ Suspendido";
+        }
+
+        const fila = `
+            <tr>
+                <td>${item.actividad}</td>
+                <td>${item.dia}</td>
+                <td>${item.horario}</td>
+                <td><span class="badge ${claseEstado}">${mensajeEstado}</span></td>
+            </tr>
+        `;
+        cuerpo.innerHTML += fila;
+    }
+    
+    console.log("Cronograma renderizado correctamente");
 }
 
-function limpiarFormulario() {
-    formulario.reset();
-    nombreInput.classList.remove('is-valid', 'is-invalid');
-    descripcionInput.classList.remove('is-valid', 'is-invalid');
-    categoriaSelect.classList.remove('is-valid', 'is-invalid');
+// ============================================================
+// 🔹 FUNCIÓN: Renderizar lista de participantes
+// ============================================================
+function renderizarParticipantes() {
+    const lista = document.getElementById("listaRegistros");
+    const contador = document.getElementById("contador");
+    
+    if (!lista || !contador) return;
+    
+    contador.textContent = participantes.length;
+
+    if (participantes.length === 0) {
+        lista.innerHTML = `<p class="text-center text-muted">Aún no hay inscripciones registradas.</p>`;
+        return;
+    }
+
+    lista.innerHTML = participantes.map((p, index) => {
+        let colorCategoria = "";
+        if (p.categoria === "Inicial") colorCategoria = "bg-info";
+        else if (p.categoria === "Intermedio") colorCategoria = "bg-warning text-dark";
+        else colorCategoria = "bg-danger";
+
+        return `
+            <div class="card mb-2 p-3 border-start border-4 border-danger">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h5 class="mb-1 text-start">${p.nombre}</h5>
+                        <p class="mb-1 small">
+                            <strong>Edad:</strong> ${p.edad} años |
+                            <span class="badge ${colorCategoria}">${p.categoria}</span>
+                        </p>
+                        <p class="mb-0 small fst-italic">"${p.motivo}"</p>
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger" onclick="eliminarParticipante(${index})">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join("");
 }
 
-// --------------------------
-// Eventos
-// --------------------------
-// Validación en tiempo real
-nombreInput.addEventListener('input', validarNombre);
-nombreInput.addEventListener('blur', validarNombre);
+// ============================================================
+// 🔹 FUNCIÓN: Mostrar mensaje dinámico
+// ============================================================
+function mostrarMensaje(texto, tipo = "success") {
+    const mensaje = document.getElementById("mensaje");
+    if (!mensaje) return;
+    
+    mensaje.className = `alert alert-${tipo} mb-3`;
+    mensaje.textContent = texto;
+    mensaje.classList.remove("d-none");
 
-descripcionInput.addEventListener('input', validarDescripcion);
-descripcionInput.addEventListener('blur', validarDescripcion);
+    setTimeout(() => {
+        mensaje.classList.add("d-none");
+    }, 4000);
+}
 
-categoriaSelect.addEventListener('change', validarCategoria);
-categoriaSelect.addEventListener('blur', validarCategoria);
+// ============================================================
+// 🔹 FUNCIÓN: Validar formulario
+// ============================================================
+function validarFormulario() {
+    const nombre    = document.getElementById("nombre").value.trim();
+    const edad      = document.getElementById("edad").value.trim();
+    const categoria = document.getElementById("categoria").value;
+    const motivo    = document.getElementById("motivo").value.trim();
 
-// Envío del formulario
-formulario.addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita recarga de página
+    let esValido = true;
 
-    if (validarFormulario()) {
-        const nuevoRegistro = {
-            nombre: nombreInput.value.trim(),
-            descripcion: descripcionInput.value.trim(),
-            categoria: categoriaSelect.value
-        };
-        agregarRegistro(nuevoRegistro);
-        mostrarMensaje('¡Registro guardado exitosamente!', 'success');
-        limpiarFormulario();
-    } else {
-        mostrarMensaje('Corrige los errores antes de continuar', 'danger');
+    document.getElementById("errorNombre").textContent    = "";
+    document.getElementById("errorEdad").textContent      = "";
+    document.getElementById("errorCategoria").textContent = "";
+    document.getElementById("errorMotivo").textContent    = "";
+
+    if (nombre === "") {
+        document.getElementById("errorNombre").textContent = "⚠ El nombre es obligatorio.";
+        esValido = false;
+    } else if (nombre.length < 3) {
+        document.getElementById("errorNombre").textContent = "⚠ El nombre debe tener al menos 3 caracteres.";
+        esValido = false;
+    }
+
+    if (edad === "") {
+        document.getElementById("errorEdad").textContent = "⚠ La edad es obligatoria.";
+        esValido = false;
+    } else if (parseInt(edad) < 8 || parseInt(edad) > 99) {
+        document.getElementById("errorEdad").textContent = "⚠ La edad debe estar entre 8 y 99 años.";
+        esValido = false;
+    }
+
+    if (categoria === "") {
+        document.getElementById("errorCategoria").textContent = "⚠ Debe seleccionar una categoría.";
+        esValido = false;
+    }
+
+    if (motivo === "") {
+        document.getElementById("errorMotivo").textContent = "⚠ El motivo es obligatorio.";
+        esValido = false;
+    } else if (motivo.length < 10) {
+        document.getElementById("errorMotivo").textContent = "⚠ El motivo debe tener al menos 10 caracteres.";
+        esValido = false;
+    }
+
+    return esValido;
+}
+
+// ============================================================
+// 🔹 EVENTO: Enviar formulario de inscripción
+// ============================================================
+document.addEventListener("DOMContentLoaded", function() {
+    const formulario = document.getElementById("formularioInscripcion");
+    
+    if (formulario) {
+        formulario.addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            console.log("Formulario enviado");
+
+            if (!validarFormulario()) {
+                mostrarMensaje("❌ Por favor corrige los errores del formulario.", "danger");
+                return;
+            }
+
+            const nuevo = {
+                nombre:    document.getElementById("nombre").value.trim(),
+                edad:      parseInt(document.getElementById("edad").value),
+                categoria: document.getElementById("categoria").value,
+                motivo:    document.getElementById("motivo").value.trim()
+            };
+
+            participantes.push(nuevo);
+            renderizarParticipantes();
+
+            if (participantes.length === 1) {
+                mostrarMensaje("✅ ¡Primer participante registrado con éxito!", "success");
+            } else {
+                mostrarMensaje(`✅ ¡Registro exitoso! Ya son ${participantes.length} participantes.`, "success");
+            }
+
+            this.reset();
+        });
+    }
+
+    // Renderizar datos al cargar la página
+    renderizarServicios();
+    renderizarCronograma();
+    renderizarParticipantes();
+    
+    console.log("Página cargada correctamente");
+});
+
+// ============================================================
+// 🔹 FUNCIÓN: Eliminar participante
+// ============================================================
+function eliminarParticipante(index) {
+    if (confirm("¿Seguro que deseas eliminar este registro?")) {
+        participantes.splice(index, 1);
+        renderizarParticipantes();
+        mostrarMensaje("🗑 Registro eliminado correctamente.", "warning");
+    }
+}
+
+// ============================================================
+// 🔹 EVENTO: Formulario de contacto
+// ============================================================
+document.addEventListener("DOMContentLoaded", function() {
+    const formContacto = document.getElementById("formContacto");
+    if (formContacto) {
+        formContacto.addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("✅ ¡Mensaje enviado! Pronto nos pondremos en contacto contigo.");
+            this.reset();
+        });
     }
 });
