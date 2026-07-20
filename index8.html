@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMINO DE FE EN MI PARROQUIA</title>
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid px-3 px-md-4">
+        <!-- Encabezado -->
+        <header class="caja-estilo mt-3 text-center">
+            <h1>CAMINO DE FE EN MI PARROQUIA</h1>
+            <h2>Formación y preparación de monaguillos</h2>
+            <p class="fst-italic" style="color: #b71c1c; font-weight: bold;">"Servir en el altar es servir a Cristo con amor y compromiso."</p>
+        </header>
+
+        <!-- Navbar Bootstrap -->
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="menuPrincipal">
+                    <ul class="navbar-nav gap-2 gap-md-3">
+                        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#quienes">Quiénes Somos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#inscripciones">Inscripciones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#cronograma">Cronograma</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="container">
+            <!-- Sección Inicio -->
+            <section id="inicio" class="caja-estilo">
+                <article>
+                    <h2>✨ Bienvenidos a este Camino de Fe ✨</h2>
+                    <p>Nos alegra profundamente que hayas llegado hasta aquí, porque este espacio ha sido creado con mucho cariño y dedicación, pensando en todos aquellos corazones jóvenes que desean acercarse más a Dios y vivir su fe de una manera activa, alegre y comprometida.</p>
+                    <p><strong>Camino de Fe en mi Parroquia</strong> es mucho más que un proyecto de formación: es una oportunidad maravillosa de crecer, de aprender y de descubrir la belleza de servir.</p>
+                    <div class="text-center mt-4">
+                        <a href="#inscripciones" class="btn btn-primary btn-lg">¡Inscríbete aquí!</a>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Sección Quiénes Somos -->
+            <section id="quienes" class="caja-estilo">
+                <h2>Quiénes Somos</h2>
+                <div class="row align-items-center g-4">
+                    <div class="col-md-5 text-center">
+                        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=900" alt="Comunidad parroquial" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-7">
+                        <p>Camino de Fe en mi Parroquia es un proyecto educativo y formativo orientado al crecimiento espiritual de los monaguillos y de todos los jóvenes interesados en participar activamente en la Iglesia. Nuestro objetivo es ofrecer herramientas de aprendizaje que permitan conocer mejor la liturgia, las funciones dentro del altar y los valores cristianos que fortalecen la vida comunitaria.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Servicios (Cards) -->
+            <section id="servicios" class="caja-estilo">
+                <h2>Servicios y Actividades</h2>
+                <div class="row g-4 mt-2">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card p-3">
+                            <h5 class="card-title text-center">📖 Formación Litúrgica</h5>
+                            <p class="card-text">Aprende el significado de cada rito, oración y gesto en la celebración de la Eucaristía.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card p-3">
+                            <h5 class="card-title text-center">🤝 Servicio en el Altar</h5>
+                            <p class="card-text">Capacitación práctica sobre las funciones, vestimenta y comportamiento adecuado.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card p-3">
+                            <h5 class="card-title text-center">✨ Actividades Espirituales</h5>
+                            <p class="card-text">Convivencias, retiros, encuentros y celebraciones especiales para fortalecer la fe.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Inscripciones (Formulario, Validaciones, Spinner, Tabla Dinámica, Alerta) -->
+            <section id="inscripciones" class="caja-estilo">
+                <h2>📋 Registro de Inscripciones</h2>
+                <p class="text-center mb-4">Completa el formulario para registrar nuevos participantes al programa.</p>
+                
+                <!-- Alerta Bootstrap -->
+                <div id="alertaMensaje" class="alert d-none" role="alert"></div>
+
+                <div class="row g-4">
+                    <div class="col-lg-5">
+                        <h3 class="text-center">Formulario</h3>
+                        <form id="formularioInscripcion" novalidate>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ej: Juan Pérez" required>
+                                <div id="errorNombre" class="invalid-feedback"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="number" class="form-control" id="edad" placeholder="Ej: 12" min="8" max="99" required>
+                                <div id="errorEdad" class="invalid-feedback"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="categoria" class="form-label">Categoría</label>
+                                <select class="form-select" id="categoria" required>
+                                    <option value="">Seleccione una opción</option> 
+                                    <option value="Inicial">Inicial (8 - 12 años)</option>
+                                    <option value="Intermedio">Intermedio (13 - 17 años)</option>  
+                                    <option value="Avanzado">Avanzado (18 años en adelante)</option>                 
+                                </select>
+                                <div id="errorCategoria" class="invalid-feedback"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="motivo" class="form-label">Motivo de inscripción</label>
+                                <textarea class="form-control" id="motivo" rows="3" placeholder="Breve explicación..." required></textarea>
+                                <div id="errorMotivo" class="invalid-feedback"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100" id="btnRegistrar">
+                                <i class="bi bi-person-plus-fill"></i> Registrar Participante
+                            </button>
+                        </form>
+                        
+                        <!-- Spinner Bootstrap -->
+                        <div id="spinnerCarga" class="text-center mt-3 d-none">
+                            <div class="spinner-border text-danger" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                            <p class="mt-2 text-danger fw-bold">Procesando registro...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-7">
+                        <h3 class="text-center">Participantes Registrados</h3>
+                        <h4 class="text-center text-muted">Total registros: <span id="contador" class="badge bg-danger fs-6">0</span></h4>
+                        <div id="listaRegistros" class="mt-3">
+                            <p class="text-center text-muted">Aún no hay inscripciones registradas.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Cronograma (Tabla) -->
+            <section id="cronograma" class="caja-estilo">
+                <h2>Cronograma de Formación</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover text-center">
+                        <thead class="table-danger">
+                            <tr>
+                                <th>Actividad</th>
+                                <th>Día</th>
+                                <th>Horario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Formación Litúrgica</td><td>Sábado</td><td>09:00 - 11:00</td></tr>
+                            <tr><td>Ensayo General</td><td>Domingo</td><td>08:45 - 09:45</td></tr>
+                            <tr><td>Servicio en la Misa</td><td>Domingo</td><td>10:00 - 12:00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Sección Contacto -->
+            <section id="contacto" class="caja-estilo">
+                <h2>Contacto</h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h3>Información de contacto</h3>
+                        <p><strong>Correo:</strong> caminodefe@gmail.com</p>
+                        <p><strong>Teléfono:</strong> +593 999999999</p>
+                        <p><strong>Dirección:</strong> Parroquia San Pedro, Las Lajas, El Oro, Ecuador</p>
+                        <h4 class="mt-4">Redes Sociales</h4>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="btn btn-outline-danger"><i class="bi bi-facebook"></i> Facebook</a>
+                            <a href="#" class="btn btn-outline-danger"><i class="bi bi-instagram"></i> Instagram</a>
+                            <a href="#" class="btn btn-outline-danger"><i class="bi bi-youtube"></i> YouTube</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Escríbenos</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="nombreContacto" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="nombreContacto" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="correoContacto" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="correoContacto" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensajeContacto" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="mensajeContacto" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Enviar mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="caja-estilo text-center mt-4">
+            <p style="color: #b71c1c; font-weight: bold; margin: 0;">
+                <strong>Estudiante:</strong> Jesenia Montalván<br>
+                <strong>Asignatura:</strong> Desarrollo de Aplicaciones Web<br>
+                <strong>Año:</strong> 2026
+            </p>
+        </footer>
+    </div>
+
+    <!-- Modal Bootstrap -->
+    <div class="modal fade" id="modalRegistro" tabindex="-1" aria-labelledby="modalRegistroLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="modalRegistroLabel">
+                        <i class="bi bi-check-circle-fill"></i> Registro Exitoso
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    El participante ha sido registrado correctamente en el sistema.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lógica JavaScript personalizada -->
+    <script src="script.js"></script>
+</body>
+</html>

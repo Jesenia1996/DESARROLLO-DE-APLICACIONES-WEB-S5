@@ -1,13 +1,5 @@
-/* ============================================================ */
-/* Estilos personalizados - Camino de Fe en mi Parroquia         */
-/* ============================================================ */
-
-html {
-    scroll-behavior: smooth;
-}
-
+/* style.css */
 body {
-    body {
     margin: 0;
     padding: 0;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -15,110 +7,109 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
 }
-}
 
-@keyframes moverEstrellas {
-    0%   { background-position: 0 0; }
-    100% { background-position: -1000px 500px; }
-}
-
-/* Cajas principales */
 .caja-estilo {
-    background: rgba(255, 255, 255, 0.92);
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
     border: 3px solid #b71c1c;
-    box-shadow: 0 0 15px rgba(183, 28, 28, 0.5);
+    box-shadow: 0 0 15px rgba(183, 28, 28, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
     color: #b71c1c;
-    font-weight: bold;
     text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
 }
 
 p, li {
     color: #212121;
-    line-height: 1.8;
-    font-size: 1.05rem;
+    line-height: 1.7;
+    font-size: 1.05em;
 }
 
-/* Navbar */
 .navbar-custom {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.95);
     border: 2px solid #b71c1c;
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .navbar-custom .nav-link {
     color: #b71c1c;
     font-weight: bold;
-    transition: 0.3s;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
-.navbar-custom .nav-link:hover {
-    background: #b71c1c;
+.navbar-custom .nav-link:hover, .navbar-custom .nav-link.active {
+    background-color: #b71c1c;
     color: white;
-    border-radius: 8px;
 }
 
-/* Botones */
-.btn-rojo,
-.btn-personalizado {
-    background: #b71c1c;
-    color: white;
-    transition: 0.3s;
-    border: none;
-}
-
-.btn-rojo:hover,
-.btn-personalizado:hover {
-    background: #8b0000;
-    color: white;
-    transform: scale(1.05);
-}
-
-/* Tarjetas de servicios */
 .card {
     border: 2px solid #b71c1c;
-    transition: 0.4s;
+    background-color: #fff;
+    box-shadow: 0 3px 8px rgba(183, 28, 28, 0.3);
     height: 100%;
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-5px);
 }
 
-img {
-    transition: 0.4s;
-    border-radius: 10px;
-}
-
-img:hover {
-    transform: scale(1.03);
-}
-
-/* Tabla de cronograma */
-table {
-    background: white;
-}
-
-th {
-    background: #b71c1c !important;
-    color: white;
-}
-
-/* Footer */
-footer {
+.card-title {
     color: #b71c1c;
     font-weight: bold;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.5rem; }
-    .caja-estilo { padding: 18px; }
+img, iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 2px solid #b71c1c;
+    display: block;
+    margin: 15px auto;
+}
+
+.aviso-video {
+    background-color: #fff5f5;
+    border: 2px solid #b71c1c;
+    color: #b71c1c;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.form-control, .form-select {
+    border: 2px solid #b71c1c;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #b71c1c;
+    box-shadow: 0 0 0 0.25rem rgba(183, 28, 28, 0.25);
+}
+
+/* Validación visual dinámica */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
+
+/* Responsividad adicional */
+@media (max-width: 576px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    .caja-estilo { padding: 1rem; }
 }
